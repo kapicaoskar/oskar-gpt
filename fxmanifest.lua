@@ -4,7 +4,7 @@ game 'gta5'
 
 lua54 'yes'
 
-author 'ExperienceStudio - Tirex,Kekv'
+author 'Oskar'
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
