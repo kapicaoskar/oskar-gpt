@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.1.1/css/pro.min.css">
+</head>
+<body>
+    <span id="tirex-gpt-section">
+        <section id="main">
+            <div class="item" style="border-collapse:collapse;display:table;--width:17.5%;--height:calc(100% - 50px);--margin:25px;">
+                <div id="logo">
+                    <img src="public/img/logo.png" alt="SAPD">
+                    <br/>
+                </div>
+                <hr/>
+                <br/>
+                <div class="nav-button active" onclick="turnSection('main')">
+                    <div id="icon"><i class="fa-duotone fa-grid-2"></i></div>
+                    <div id="content">Ekran główny</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('patrol')">
+                    <div id="icon"><i class="fa-duotone fa-user-police"></i></div>
+                    <div id="content">Patrole</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('citizens')">
+                    <div id="icon"><i class="fa-duotone fa-magnifying-glass"></i></div>
+                    <div id="content">Obywatele</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('vehicles')">
+                    <div id="icon"><i class="fa-duotone fa-car-side"></i></div>
+                    <div id="content">Pojazdy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('weapon_evi')">
+                    <div id="icon"><i class="fa-duotone fa-gun"></i></div>
+                    <div id="content">Ewidencja broni</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('discourse')">
+                    <div id="icon"><i class="fa-duotone fa-folder-open"></i></div>
+                    <div id="content">Sprawy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('judgement')">
+                    <div id="icon"><i class="fa-duotone fa-handcuffs"></i></div>
+                    <div id="content">Wyroki</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('annoucem')">
+                    <div id="icon"><i class="fa-duotone fa-comments"></i></div>
+                    <div id="content">Komunikaty</div>
+                </div>
+                <div class="nav-button tirex-worker-panel" style="border-bottom:0;" onclick="turnSection('workers')">
+                    <div id="icon"><i class="fa-duotone fa-user"></i></div>
+                    <div id="content">Pracownicy</div>
+                </div>
+                <div class="nav-button close" >
+                    <div id="icon"><i class="fa-duotone fa-power-off"></i></div>
+                    <div id="content">Wyłącz tablet</div>
+                </div>
+            </div>
+            
+            <div id="header" class="item" style="--width:calc(100% - 17.5% - 75px);--height: 50px;--margin:25px 0px 15px 0px;--padding:20px 0px">
+                <span class="tirex-name">Witaj, <b>NAME, SURNAME - TIME</b></span>
+                <button id="tirex-language-main-button" onclick="createNewDiscourse()"><i class="fa-regular fa-circle-plus"></i>&nbsp;&nbsp;&nbsp;Dodaj nową sprawę</button>
+            </div>
+
+            <div id="annoucements" class="item" style="--width:calc(100% - 17.5% - 27.5% - 50px); --height:80px;overflow-y:scroll;">
+                <p>Ważne komunikaty</p>
+                <p id="annoucement">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur viverra sapien a augue posuere, ut imperdiet felis ultricies. Quisque arcu tortor, pretium sit amet sollicitudin quis, interdum eget tellus. Nunc sit amet massa hendrerit, cursus felis ac, imperdiet augue. Quisque nisi ligula, efficitur a massa ac, dictum eleifend elit. Proin venenatis, elit vitae lacinia sodales, sapien purus mollis ligula, quis faucibus elit risus nec nulla. Etiam libero urna, volutpat elementum mollis vitae, mollis in mauris. Vivamus ut mauris laoreet, aliquet risus eu, commodo metus. Aliquam mattis commodo nibh. Integer vel massa magna. Nulla sagittis urna eu suscipit gravida. Vivamus auctor porttitor dolor non tincidunt. Nam in neque quis risus dictum convallis. Quisque pellentesque, metus sit amet tincidunt suscipit, nunc sapien iaculis enim, ut euismod lacus erat a nisl. Pellentesque auctor ipsum vitae arcu elementum cursus.</p>
+            </div>
+
+            <div id="cop-list" class="item" style="--width:calc(100% - 17.5% - 27.5% - 50px); --height: calc(100% - 248px); --margin: 15px 0px">
+                <div id="header"><p id="tirex-language-main-officers">Funkcjonariusze aktywni na zmianie</p><p id="cop-count">1</p></div>
+
+                <table id="tirex-fpList">
+                    <tr>
+                        <th>Imię i nazwisko</th>
+                        <th>Jednostka</th>
+                        <th>Kanał radiowy</th>
+                        <th>Status</th>
+                        <th>Numer odznaki</th>
+                    </tr>
+                  
+                </table>
+            </div>
+
+            <div id="wanted" class="item" style="--width:calc(27.5% - 40px); --height:calc(50% - 100px); --margin: -75px 15px 0px 15px;">
+                <p>Najnowsze listy gończe</p>
+            
+            </div>
+
+            <div id="bolo" class="item" style="--width:calc(27.5% - 40px); --height: calc(50% - 73px); --margin: 15px 15px;">
+                <p>Najnowsze BOLO pojazdów</p>
+             
+            </div>
+        </section>
+
+        <section id="patrol">
+            <div class="item" style="border-collapse:collapse;display:table;--width:17.5%;--height:calc(100% - 50px);--margin:25px">
+                <div id="logo">
+                    <img src="public/img/logo.png" alt="SAPD">
+                    <br/>
+                </div>
+                <hr/>
+                <br/>
+                <div class="nav-button" onclick="turnSection('main')">
+                    <div id="icon"><i class="fa-duotone fa-grid-2"></i></div>
+                    <div id="content">Ekran główny</div>
+                </div>
+                <div class="nav-button active" onclick="turnSection('patrol')">
+                    <div id="icon"><i class="fa-duotone fa-user-police"></i></div>
+                    <div id="content">Patrole</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('citizens')">
+                    <div id="icon"><i class="fa-duotone fa-magnifying-glass"></i></div>
+                    <div id="content">Obywatele</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('vehicles')">
+                    <div id="icon"><i class="fa-duotone fa-car-side"></i></div>
+                    <div id="content">Pojazdy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('weapon_evi')">
+                    <div id="icon"><i class="fa-duotone fa-gun"></i></div>
+                    <div id="content">Ewidencja broni</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('discourse')">
+                    <div id="icon"><i class="fa-duotone fa-folder-open"></i></div>
+                    <div id="content">Sprawy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('judgement')">
+                    <div id="icon"><i class="fa-duotone fa-handcuffs"></i></div>
+                    <div id="content">Wyroki</div>
+                </div>
+               
+                <div class="nav-button" onclick="turnSection('annoucem')">
+                    <div id="icon"><i class="fa-duotone fa-comments"></i></div>
+                    <div id="content">Komunikaty</div>
+                </div>
+                <div class="nav-button tirex-worker-panel" style="border-bottom:0;" onclick="turnSection('workers')">
+                    <div id="icon"><i class="fa-duotone fa-user"></i></div>
+                    <div id="content">Pracownicy</div>
+                </div>
+                <div class="nav-button close" >
+                    <div id="icon"><i class="fa-duotone fa-power-off"></i></div>
+                    <div id="content">Wyłącz tablet</div>
+                </div>
+            </div>
+
+            <div id="header" class="item" style="--width:calc(100% - 17.5% - 75px);--height: 50px;--margin:25px 0px 15px 0px;--padding:20px 0px">
+                <span class="tirex-name">Witaj, <b>NAME, SURNAME - TIME</b></span>
+                <button id="tirex-language-patrols-button" onclick="openPopup('patrol')"><i class="fa-regular fa-circle-plus"></i>&nbsp;&nbsp;&nbsp;Dodaj nowy patrol</button>
+            </div>
+
+            <div id="patrol-list" class="item" style="--width:calc(50% - 8.5% - 50px); --height: calc(100% - 65px - 90px); --margin: 0px 0px">
+                <div id="searchbar">
+                    <input type="text" id="tirex-search-patrol" placeholder="Wyszukaj patrol"/>
+                    <div id="searchicon"><i class="fa-light fa-search"></i></div>
+                </div>
+                <span id="tirex-patrols">
+
+                </span>
+            </div>
+
+            <div id="cop-list-tt" class="item" style="--width:calc(50% - 8.5% - 50px); --height: calc(100% - 65px - 90px); --margin: 0px 15px">
+                <div id="searchbar">
+                    <input type="text" id="tirex-gpt-dispatch-search" placeholder="Wyszukaj zgłoszenie"/>
+                    <div id="searchicon"><i class="fa-light fa-search"></i></div>
+                </div>
+                <table id="patrol-announcements">
+                
+                </table>
+            </div>
+            
+            <div id="popup-patrol-background" class="popup">
+                <div id="popup-patrol" class="popup-menu" style="--width: 350px; --height: 200px; --padding:25px;">
+                    <p>Dodaj nowy patrol</p>
+                    <select class="patrol-select" id="patrol-selected-vehicle">
+                    </select>
+                    <input type="number" id="patrol-display-number" placeholder="Numer Pojazdu">
+                    <input type="button" onclick="closePopup('patrol')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                    <input type="button" onclick="addFromPopup('patrol')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                </div>    
+            </div>
+        </section>
+
+        <section id="citizens">
+            <div class="item" style="border-collapse:collapse;display:table;--width:17.5%;--height:calc(100% - 50px);--margin:25px">
+                <div id="logo">
+                    <img src="public/img/logo.png" alt="SAPD">
+                    <br/>
+                </div>
+                <hr/>
+                <br/>
+                <div class="nav-button" onclick="turnSection('main')">
+                    <div id="icon"><i class="fa-duotone fa-grid-2"></i></div>
+                    <div id="content">Ekran główny</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('patrol')">
+                    <div id="icon"><i class="fa-duotone fa-user-police"></i></div>
+                    <div id="content">Patrole</div>
+                </div>
+                <div class="nav-button active" onclick="turnSection('citizens')">
+                    <div id="icon"><i class="fa-duotone fa-magnifying-glass"></i></div>
+                    <div id="content">Obywatele</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('vehicles')">
+                    <div id="icon"><i class="fa-duotone fa-car-side"></i></div>
+                    <div id="content">Pojazdy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('weapon_evi')">
+                    <div id="icon"><i class="fa-duotone fa-gun"></i></div>
+                    <div id="content">Ewidencja broni</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('discourse')">
+                    <div id="icon"><i class="fa-duotone fa-folder-open"></i></div>
+                    <div id="content">Sprawy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('judgement')">
+                    <div id="icon"><i class="fa-duotone fa-handcuffs"></i></div>
+                    <div id="content">Wyroki</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('annoucem')">
+                    <div id="icon"><i class="fa-duotone fa-comments"></i></div>
+                    <div id="content">Komunikaty</div>
+                </div>
+                <div class="nav-button tirex-worker-panel" style="border-bottom:0;" onclick="turnSection('workers')">
+                    <div id="icon"><i class="fa-duotone fa-user"></i></div>
+                    <div id="content">Pracownicy</div>
+                </div>
+                <div class="nav-button close" >
+                    <div id="icon"><i class="fa-duotone fa-power-off"></i></div>
+                    <div id="content">Wyłącz tablet</div>
+                </div>
+            </div>
+
+            <div id="header" class="item citizen-header" style="--width:calc(100% - 17.5% - 75px);--height: 50px;--margin:25px 0px 15px 0px;--padding:20px 0px">
+                <span class="tirex-name">Witaj, <b>NAME, SURNAME - TIME</b></span>
+            </div>
+
+            <div id="citizen-search" class="item" style="--width:calc(100% - 17.5% - 75px); --height: calc(100% - 65px - 90px); --margin: 0px 0px;overflow-y:scroll;">
+                <div id="citizen-search-content">
+                    <div id="searchbar">
+                        <input type="text" id="tirex-search-citizen" placeholder="Wyszukaj obywatela (minimum 3 znaki)"/>
+                        <div id="searchicon"><i class="fa-light fa-search"></i></div>
+                    </div>
+        
+                    <table id="citizen-list-table">
+                        <tr>
+                            <th style="width:50%;">Obywatel</th>
+                            <th style="width:20%;">Poszukiwany</th>
+                            <th style="width:20%;">Social Security Number</th>
+                            <th style="width:10%;"></th>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="citizen-more-info">
+                    <div id="popup-citizen-background" class="popup">
+                        <div id="popup-citizen-picture-edit" class="popup-menu" style="--width: 350px; --height: auto; --padding:25px;">
+                            <p>Podaj link URL do zdjęcia</p>
+                            <input type="text" id="citizen-picture-url">
+                            <input type="button" onclick="closePopup('citizen-picture-edit')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                            <input type="button" onclick="addFromPopup('citizen-picture-edit')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                        </div>   
+                        <div id="popup-citizen-wanted" class="popup-menu" style="--width: 500px; --height: auto; --padding:25px;">
+                            <p>Dodaj nowe poszukiwanie</p>
+                            <input type="text" id="citizen-wanted-number" placeholder="Podaj numer sprawy (nieobowiązkowe)">
+                            <textarea id="citizen-wanted-description" placeholder="Treść"></textarea>
+                            <input type="number" id="citizen-wanted-duration" placeholder="Ilość dni poszukiwania">
+                            <input type="button" onclick="closePopup('popup-citizen-wanted')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                            <input type="button" onclick="addFromPopup('popup-citizen-wanted')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                        </div>   
+                        <div id="popup-citizen-description" class="popup-menu" style="--width: 500px; --height: auto; --padding:25px;">
+                            <p>Edytuj komentarz</p>
+                            <textarea id="citizen-wanted-description" placeholder="Treść"></textarea>
+                            <input type="button" onclick="closePopup('popup-citizen-description')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                            <input type="button" onclick="addFromPopup('popup-citizen-description')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                        </div>    
+                        <div id="popup-citizen-note" class="popup-menu" style="--width: 650px; --height: auto; --padding:25px;">
+                            <p>Dodaj notatkę</p>
+                            <div class="toggle-pill">
+                                <input type="checkbox" id="pill1-citizen" name="check">
+                                <label for="pill1-citizen"></label>
+                            </div>
+                            <span class="toggle-pill-label">Ważne</span>
+                            <textarea id="citizen-note-description" placeholder="Wpisz treść notatki"></textarea>
+                    
+                            <input type="button" onclick="closePopup('popup-citizen-note')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                            <input type="button" onclick="addFromPopup('popup-citizen-note')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                        </div>  
+                    </div>
+        
+                    <div id="citizen-top" style="height:281px;">
+                        <span id="tirex-citizen-info-header"></span>
+                        
+                        </span>
+                    </div>
+                    <br/>
+                    <div id="citizen-status" class="citizen-bonus-info">
+                        <p>Status</p>
+                        <span id="tirex-citizen-status-nowanted">
+                            <span class="citizen-button citizen-button-status" style="margin:0;">Brak Poszukiwań</span>
+                            <br/><br/>
+                        </span>
+                        <span id="tirex-citizen-status-wanted">
+                       
+                        </span>
+                    </div>
+                    <hr/>
+                    <div id="citizen-ticket-history" class="citizen-bonus-info">
+                        <p>Historia Wykroczeń</p>
+                        <div id="citizen-ticket-list" class="item" style="--width: 100%; --height: 150px; overflow:hidden;">
+                          
+
+                        </div>
+                        <input type="button" class="button-show-all" id="tirex-citizen-history-button" value="Rozwiń" onclick="togglePlayerVehicles(this, true, 1)">
+                        <br/><br/>
+                    </div>
+                    <hr/>
+                    <div id="citizen-notes" class="citizen-bonus-info">
+                        <p>Notatki</p>
+                        <br/>
+                        <div id="citizen-note-list" class="item" style="--width: 100%; --height: 150px; overflow:hidden;">
+                         
+                        </div>
+                        <input type="button" class="button-show-all" id="tirex-citizen-notes-button" value="Rozwiń" onclick="togglePlayerVehicles(this, true, 2)">
+                        <br/><br/>
+                    </div>
+                    <hr/>
+                    <div id="citizen-notes" class="citizen-bonus-info tirex-citizen-cars-block">
+                        <p>Pojazdy</p>
+                        <div id="vehicle-list" class="item" style="--width: 100%; --height: 150px; overflow:hidden;">
+                            <div class="item person-car" style="--width: calc(100% - 100px); --height: 200px; background-color: var(--itemcolor); --margin: 0px 25px; --padding: 0px 25px;">
+                                <p>POJAZD</p>
+                                <hr/>
+                                <span>Numer VIN: <strong>vinvinvinvin</strong></span>
+                                <hr/>
+                                <span>Tablica rejestracyjna: <strong> 2137420</strong></span>
+                                <hr/>
+                                <span>Status: <span class="citizen-button citizen-button-status">Brak Poszukiwań</span></span>
+                            </div>
+                            <div class="item person-car" style="--width: calc(100% - 100px); --height: 200px; background-color: var(--itemcolor); --margin: 0px 25px; --padding: 0px 25px;">
+                                <p>POJAZD</p>
+                                <hr/>
+                                <span>Numer VIN: <strong>vinvinvinvin</strong></span>
+                                <hr/>
+                                <span>Tablica rejestracyjna: <strong> 2137420</strong></span>
+                                <hr/>
+                                <span>Status: <span class="citizen-button citizen-button-status">Brak Poszukiwań</span></span>
+                            </div>
+                        </div>
+                        <input type="button" class="button-show-all" value="Rozwiń" onclick="togglePlayerVehicles(this, true, 3)">
+                        <br/><br/>
+                    </div>
+                    <div id="citizen-notes" class="citizen-bonus-info tirex-citizen-cars-hide">
+                        <p>Pojazdy</p>
+                        <span>Brak</span>
+                        <br/><br/>
+                    </div>
+                    <hr/>
+                    <div id="citizen-settings" class="citizen-bonus-info">
+                        <br/>
+                        <span class="citizen-button citizen-button-status" onclick="openPopup('popup-citizen-wanted')">Dodaj poszukiwanie</span>
+                        <span class="citizen-button citizen-button-status" onclick="openPopup('popup-citizen-note')" style="margin-left:0;">Dodaj notatkę</span>
+                        <br/><br/>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="vehicles">
+            <div class="item" style="border-collapse:collapse;display:table;--width:17.5%;--height:calc(100% - 50px);--margin:25px">
+                <div id="logo">
+                    <img src="public/img/logo.png" alt="SAPD">
+                    <br/>
+                </div>
+                <hr/>
+                <br/>
+                <div class="nav-button" onclick="turnSection('main')">
+                    <div id="icon"><i class="fa-duotone fa-grid-2"></i></div>
+                    <div id="content">Ekran główny</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('patrol')">
+                    <div id="icon"><i class="fa-duotone fa-user-police"></i></div>
+                    <div id="content">Patrole</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('citizens')">
+                    <div id="icon"><i class="fa-duotone fa-magnifying-glass"></i></div>
+                    <div id="content">Obywatele</div>
+                </div>
+                <div class="nav-button active" onclick="turnSection('vehicles')">
+                    <div id="icon"><i class="fa-duotone fa-car-side"></i></div>
+                    <div id="content">Pojazdy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('weapon_evi')">
+                    <div id="icon"><i class="fa-duotone fa-gun"></i></div>
+                    <div id="content">Ewidencja broni</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('discourse')">
+                    <div id="icon"><i class="fa-duotone fa-folder-open"></i></div>
+                    <div id="content">Sprawy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('judgement')">
+                    <div id="icon"><i class="fa-duotone fa-handcuffs"></i></div>
+                    <div id="content">Wyroki</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('annoucem')">
+                    <div id="icon"><i class="fa-duotone fa-comments"></i></div>
+                    <div id="content">Komunikaty</div>
+                </div>
+                <div class="nav-button tirex-worker-panel" style="border-bottom:0;" onclick="turnSection('workers')">
+                    <div id="icon"><i class="fa-duotone fa-user"></i></div>
+                    <div id="content">Pracownicy</div>
+                </div>
+                <div class="nav-button close" >
+                    <div id="icon"><i class="fa-duotone fa-power-off"></i></div>
+                    <div id="content">Wyłącz tablet</div>
+                </div>
+            </div>
+
+            <div id="header" class="item vehicle-header" style="--width:calc(100% - 17.5% - 75px);--height: 50px;--margin:25px 0px 15px 0px;--padding:20px 0px">
+                <span class="tirex-name">Witaj, <b>NAME, SURNAME - TIME</b></span>
+            </div>
+
+            <div id="citizen-search" class="item" style="--width:calc(100% - 17.5% - 75px); --height: calc(100% - 65px - 90px); --margin: 0px 0px;overflow-y:scroll;">
+
+                <div id="popup-vehicle-background" class="popup">
+                    <div id="popup-vehicle-wanted" class="popup-menu" style="--width: 500px; --height: auto; --padding:25px;">
+                        <p>Dodaj nowe poszukiwanie</p>
+                        <input type="text" id="vehicle-wanted-number" placeholder="Podaj numer sprawy (nieobowiązkowe)">
+                        <textarea id="vehicle-wanted-description" placeholder="Treść"></textarea>
+                        <input type="number" id="vehicle-wanted-duration" placeholder="Ilość dni poszukiwania">
+                        <input type="button" onclick="closePopup('popup-vehicle-wanted')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                        <input type="button" onclick="addFromPopup('popup-vehicle-wanted')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                    </div>  
+                    <div id="popup-vehicle-description" class="popup-menu" style="--width: 500px; --height: auto; --padding:25px;">
+                        <p>Edytuj komentarz</p>
+                        <textarea id="vehicle-wanted-description" placeholder="Treść"></textarea>
+                        <input type="button" onclick="closePopup('popup-vehicle-description')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                        <input type="button" onclick="addFromPopup('popup-vehicle-description')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                    </div>    
+                    <div id="popup-vehicle-note" class="popup-menu" style="--width: 650px; --height: auto; --padding:25px;">
+                        <p>Dodaj notatkę</p>
+                        <div class="toggle-pill">
+                            <input type="checkbox" id="pill1-vehicle" name="check">
+                            <label for="pill1-vehicle"></label>
+                        </div>
+                        <span class="toggle-pill-label">Ważne</span>
+                        <textarea id="vehicle-note-description" placeholder="Wpisz treść notatki"></textarea>
+                
+                        <input type="button" onclick="closePopup('popup-vehicle-note')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                        <input type="button" onclick="addFromPopup('popup-vehicle-note')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                    </div>  
+                </div>
+
+                <div id="vehicle-search-box">
+                    <div id="searchbar">
+                        <input type="text" id="tirex-search-cars" placeholder="Wyszukaj pojazd (minimum 3 znaki)"/>
+                        <div id="searchicon"><i class="fa-light fa-search"></i></div>
+                    </div>
+        
+                    <span id="tirex-car-list">
+                        <table id="discourse-list">
+                            <tr>
+                                <th style="width:30%">Model</th>
+                                <th style="width:10%">Poszukiwany</th>
+                                <th style="width:20%">Właściciel</th>
+                                <th style="width:15%">VIN</th>
+                                <th style="width:20%">Tablica Rej</th>
+                                <th style="width:5%"></th>
+                            </tr>
+                         
+                        </table>
+                    </span>
+                </div>
+
+                <div id="vehicle-details" style="margin: 15px 0px 0px 15px;">
+                    <span id="tirex-vehicle-header">
+                        <div id="left">
+                            <span>Model</span>
+                            <p>Model</p>
+                            <hr/>
+                            <span>Właściciel</span>
+                            <p><span class="citizen-button citizen-button-status" style="margin-left:0;">Brak...</span></p>
+                            <hr/>
+                            <span>Współwłaściciel</span>
+                            <p><span class="citizen-button citizen-button-status" style="margin-left:0;">Brak...</span></p>
+                            <hr/>
+                        </div>
+                        <div id="right">
+                            <span>Numer VIN</span>
+                            <p>asdasdasdasd</p>
+                            <hr/>
+                            <span>Rejestracja</span>
+                            <p>1asdasd</p>
+                            <hr/>
+                        </div>
+                    </span>
+                    <br style="clear:both;"/>
+                    <p>Status</p>
+                    <span id="tirex-vehicle-status-nowanted">
+                        <span class="citizen-button citizen-button-status" style="margin-left:0;">Brak...</span>
+                        <br/><br/>
+                    </span>
+                    <span id="tirex-vehicle-status-wanted">
+                    
+                    </span>
+
+                    <hr/>
+                    <p>Notatki</p>
+                  
+                    <div id="vehicle-note-list" class="item" style="--width: 100%; --height: 150px; overflow:hidden;">
+                    
+                    </div>
+                    <input type="button" class="button-show-all" id="tirex-vehicle-notes-button" value="Rozwiń" onclick="toggleVehicleInfo(this, true, 1)">
+                    <br/><br/>
+                    <hr/>
+             
+                    <div id="vehicle-settings" class="citizen-bonus-info">
+                        <br/>
+                        <span class="citizen-button citizen-button-status" style="margin-left:0;" onclick="openPopup('popup-vehicle-wanted')">Dodaj poszukiwanie</span>
+                    
+                        <span class="citizen-button citizen-button-status" onclick="openPopup('popup-vehicle-note')" style="margin-left:0;">Dodaj notatkę</span>
+            
+                        <br/><br/>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="weapon_evi">
+            <div class="item" style="border-collapse:collapse;display:table;--width:17.5%;--height:calc(100% - 50px);--margin:25px">
+                <div id="logo">
+                    <img src="public/img/logo.png" alt="SAPD">
+                    <br/>
+                </div>
+                <hr/>
+                <br/>
+                <div class="nav-button" onclick="turnSection('main')">
+                    <div id="icon"><i class="fa-duotone fa-grid-2"></i></div>
+                    <div id="content">Ekran główny</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('patrol')">
+                    <div id="icon"><i class="fa-duotone fa-user-police"></i></div>
+                    <div id="content">Patrole</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('citizens')">
+                    <div id="icon"><i class="fa-duotone fa-magnifying-glass"></i></div>
+                    <div id="content">Obywatele</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('vehicles')">
+                    <div id="icon"><i class="fa-duotone fa-car-side"></i></div>
+                    <div id="content">Pojazdy</div>
+                </div>
+                <div class="nav-button active" onclick="turnSection('weapon_evi')">
+                    <div id="icon"><i class="fa-duotone fa-gun"></i></div>
+                    <div id="content">Ewidencja broni</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('discourse')">
+                    <div id="icon"><i class="fa-duotone fa-folder-open"></i></div>
+                    <div id="content">Sprawy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('judgement')">
+                    <div id="icon"><i class="fa-duotone fa-handcuffs"></i></div>
+                    <div id="content">Wyroki</div>
+                </div>
+                <!-- <div class="nav-button" onclick="turnSection('evidence')">
+                    <div id="icon"><i class="fa-duotone fa-memo-pad"></i></div>
+                    <div id="content">Ewidencja dowodów</div>
+                </div> -->
+                <div class="nav-button" onclick="turnSection('annoucem')">
+                    <div id="icon"><i class="fa-duotone fa-comments"></i></div>
+                    <div id="content">Komunikaty</div>
+                </div>
+                <div class="nav-button tirex-worker-panel" style="border-bottom:0;" onclick="turnSection('workers')">
+                    <div id="icon"><i class="fa-duotone fa-user"></i></div>
+                    <div id="content">Pracownicy</div>
+                </div>
+                <div class="nav-button close" >
+                    <div id="icon"><i class="fa-duotone fa-power-off"></i></div>
+                    <div id="content">Wyłącz tablet</div>
+                </div>
+            </div>
+
+            <div id="header" class="item" style="--width:calc(100% - 17.5% - 75px);--height: 50px;--margin:25px 0px 15px 0px;--padding:20px 0px">
+                <span class="tirex-name">Witaj, <b>NAME, SURNAME - TIME</b></span>
+            </div>
+
+            <div id="citizen-search" class="item" style="--width:calc(100% - 17.5% - 75px); --height: calc(100% - 65px - 90px); --margin: 0px 0px">
+                <div id="searchbar">
+                    <input type="text" id="tirex-search-weapon" placeholder="Wyszukaj numer seryjny broni (minimum 3 znaki)"/>
+                    <div id="searchicon"><i class="fa-light fa-search"></i></div>
+                </div>
+                <table id="weapon-evi-table">
+                    <tr>
+                        <th>Model</th>
+                        <th>Właściciel</th>
+                        <th>Numer seryjny</th>
+                        <th>Data zakupu</th>
+                    </tr>
+                
+                </table>
+            </div>
+
+        </section>
+
+        <section id="discourse">
+            <div class="item" style="border-collapse:collapse;display:table;--width:17.5%;--height:calc(100% - 50px);--margin:25px">
+                <div id="logo">
+                    <img src="public/img/logo.png" alt="SAPD">
+                    <br/>
+                </div>
+                <hr/>
+                <br/>
+                <div class="nav-button" onclick="turnSection('main')">
+                    <div id="icon"><i class="fa-duotone fa-grid-2"></i></div>
+                    <div id="content">Ekran główny</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('patrol')">
+                    <div id="icon"><i class="fa-duotone fa-user-police"></i></div>
+                    <div id="content">Patrole</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('citizens')">
+                    <div id="icon"><i class="fa-duotone fa-magnifying-glass"></i></div>
+                    <div id="content">Obywatele</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('vehicles')">
+                    <div id="icon"><i class="fa-duotone fa-car-side"></i></div>
+                    <div id="content">Pojazdy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('weapon_evi')">
+                    <div id="icon"><i class="fa-duotone fa-gun"></i></div>
+                    <div id="content">Ewidencja broni</div>
+                </div>
+                <div class="nav-button active" onclick="turnSection('discourse')">
+                    <div id="icon"><i class="fa-duotone fa-folder-open"></i></div>
+                    <div id="content">Sprawy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('judgement')">
+                    <div id="icon"><i class="fa-duotone fa-handcuffs"></i></div>
+                    <div id="content">Wyroki</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('annoucem')">
+                    <div id="icon"><i class="fa-duotone fa-comments"></i></div>
+                    <div id="content">Komunikaty</div>
+                </div>
+                <div class="nav-button tirex-worker-panel" style="border-bottom:0;" onclick="turnSection('workers')">
+                    <div id="icon"><i class="fa-duotone fa-user"></i></div>
+                    <div id="content">Pracownicy</div>
+                </div>
+                <div class="nav-button close" >
+                    <div id="icon"><i class="fa-duotone fa-power-off"></i></div>
+                    <div id="content">Wyłącz tablet</div>
+                </div>
+            </div>
+
+            <div id="header" class="item discourse-header" style="--width:calc(100% - 17.5% - 75px);--height: 50px;--margin:25px 0px 15px 0px;--padding:20px 0px">
+                <span class="tirex-name">Witaj, <b>NAME, SURNAME - TIME</b></span>
+            </div>
+
+            <div id="popup-discourse-background" class="popup">
+                <div id="popup-discourse-picture-edit" class="popup-menu" style="--width: 350px; --height: auto; --padding:25px;">
+                    <p>Podaj link URL do zdjęcia</p>
+                    <input type="text" id="discourse-picture-url">
+                    <input type="button" onclick="closePopup('discourse-picture-edit')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                    <input type="button" onclick="addFromPopup('discourse-picture-edit', 'image')" class="popup-button popup-confirm" id="tirex-discourse-button1" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                    <input type="button" onclick="addFromPopup('discourse-picture-edit', 'image1')" class="popup-button popup-confirm" id="tirex-discourse-button2" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px; display: none;"  value="Potwierdź">
+                </div>   
+            </div>
+
+            <div id="discourse-search" class="item" style="--width:calc(100% - 17.5% - 75px); --height: calc(100% - 65px - 90px); --margin: 0px 0px;overflow-y:scroll;">
+                <div id="discourse-search-box">
+                    <div id="searchbar" style="width:83%;float:left;">
+                        <input type="text" id="tirex-search-discourses" placeholder="Wyszukaj po numerze, lub tytule sprawy)"/>
+                        <div id="searchicon"><i class="fa-light fa-search"></i></div>
+                    </div>
+                    <button class="discourse-refresh" onclick="refreshWorkerList()" style="width:12%;">
+                        Odśwież
+                    </button>
+        
+                    <span id="tirex-discourse-list">
+                        <table id="discourse-list">
+                            <tr>
+                                <th style="width:30%">Tytuł sprawy</th>
+                                <th style="width:10%">Numer sprawy</th>
+                                <th style="width:20%">Data Edycji</th>
+                                <th style="width:15%">Autor</th>
+                                <th style="width:20%">Status</th>
+                                <th style="width:5%"></th>
+                            </tr>
+                        </table>
+                    </span>
+                </div>
+                
+                <div id="discourse-details" style="margin: 15px 0px 0px 15px;">
+                    <span>Tytuł</span>
+                    <span id="tirex-discourse-title">
+     
+                    </span>
+                    <hr/>
+                    <span>Autor</span>
+                    <span id="tirex-discourse-author-name">
+
+                    </span>
+                    <hr/>
+                    <span>Numer sprawy</span>
+                    <span id="tirex-discourse-case-id">
+                        <!-- <p>numer sprawy</p> -->
+                    </span>
+                    <hr/>
+                    <span>Status</span>
+                    <span id="tirex-discourse-case-status">
+               
+                    </span>
+                    <hr/>
+                    <br/>
+                    <span>Obywatele powiązani ze sprawą</span>
+                    <br/>
+
+                    <span id="tirex-discourse-citizens-buttons">
+               
+                    </span>
+                    <div class="wrapper">
+                        <div class="search-input" id="tirex-menu1-1">
+                            <!-- <a href="" target="_blank" hidden></a> -->
+                            <input type="text" id="tirex-search-discourse-setup-citizen" placeholder="Imię i Nazwisko/SSN">
+                            <div class="autocom-box" id="tirex-box1-1"></div> <!-- data li -->
+                        </div>
+                    </div>
+                    <hr/>
+                    <span>Funkcjonariusze powiązani ze sprawą</span>
+                    <br/>
+      
+                    <span id="tirex-discourse-officers-buttons">
+        
+                    </span>
+                    <div class="wrapper">
+                        <div class="search-input" id="tirex-menu1-2">
+                   
+                            <input type="text" id="tirex-search-discourse-setup-officer" placeholder="Imię i Nazwisko/SSN">
+                            <div class="autocom-box" id="tirex-box1-2"></div> 
+                        </div>
+                    </div>
+                    <br/>
+                    <hr/>
+                    <br/>
+                    <span>Pojazdy powiązane ze sprawą</span>
+                    <br/>
+
+                    <span id="tirex-discourse-vehicles-buttons">
+        
+                    </span>
+                    <div class="wrapper">
+                        <div class="search-input" id="tirex-menu1-3">
+              
+                            <input type="text" id="tirex-search-discourse-setup-vehicle" placeholder="VIN/Rejestracja">
+                            <div class="autocom-box" id="tirex-box1-3"></div>
+                        </div>
+                    </div>
+                    <br/>
+                    <hr/>
+                    <span>Wyroki związane ze sprawą</span>
+                    <br/>
+                    <span id="tirex-judgments-blocks">
+                        <span class="judgement-button">Brak...</span>
+                    </span>
+                    <br/>
+                    <br/>
+                    <hr/>
+                    <br/>
+                    <p>Treść sprawy</p>
+                    <textarea style="height:250px;" id="tirex-discourse-setup-content"></textarea>
+                    <br/>
+                    <hr/>
+                    <p>Zdjęcia</p>
+                    <div id="new-discourse-photo" style="cursor:pointer;"c><p class="discourse-picture-edit" onclick="openPopup('discourse-picture-edit')"><i class="fa-light fa-circle-plus"></i></p></div>
+                    <span id="tirex-discurse-load-images-list">
+               
+                    </span>
+                    <br/>
+                    <hr/>
+                    <span id="tirex-case-buttons-add">
+                        <span class="judgement-button" style="background-color:var(--buttoncolor);color:black;cursor:pointer;" onclick="caseJudgements()">Dodaj wyrok</span>
+                    </span>
+                    <br style="clear:both;"/><br/>
+                </div>
+
+                <div id="new-discourse" style="width: calc(100% - 50px); margin: 25px 0px;margin:auto;">
+                    <br/>
+                    <span>Tytuł sprawy</span><br><br>
+                    <input type="text" placeholder="Nazwa Sprawy" style="width:25%;" id="tirex-new-discourse-name" class="judgement-amount-input">
+                    <hr/>
+                    <span>Status</span>
+                    <br>
+                    <p><span class="patrol-button patrol-invalid onlyCursorHover" id="tirex-discourse-status-button" onclick="changeDiscourseStatus('uno')">Nierozwiązana</span></p>
+                    <hr/>
+                    <br/>
+                    <span>Obywatele powiązani ze sprawą</span>
+                    <br/><br>
+                    
+                    <span id="tirex-citizens-buttons">
+          
+                    </span>
+                    <div class="wrapper">
+                        <div class="search-input" id="tirex-menu1">
+                            <!-- <a href="" target="_blank" hidden></a> -->
+                            <input type="text" id="tirex-search-discourse-citizen" placeholder="Imię i Nazwisko/SSN">
+                            <div class="autocom-box" id="tirex-box1"></div> <!-- data li -->
+                        </div>
+                    </div>
+                    <hr/>
+                    <span>Funkcjonariusze powiązani ze sprawą</span>
+                    <br/><br>
+            
+                    <span id="tirex-officers-buttons">
+        
+                    </span>
+                    <div class="wrapper">
+                        <div class="search-input" id="tirex-menu2">
+                            <!-- <a href="" target="_blank" hidden></a> -->
+                            <input type="text" id="tirex-search-discourse-officer" placeholder="Imię i Nazwisko/SSN">
+                            <div class="autocom-box" id="tirex-box2"></div> <!-- data li -->
+                        </div>
+                    </div>
+                    <br/>
+                    <hr/>
+                    <br/>
+                    <span>Pojazdy powiązane ze sprawą</span>
+                    <br/><br>
+                    <!-- <input type="text" placeholder="VIN/Rejestracja" style="width:25%;" id="tirex-search-discourse-vehicle" class="judgement-amount-input"> -->
+                    <span id="tirex-vehicles-buttons">
+                        <!-- <span class="judgement-button">Imię nazwisko</span> -->
+                    </span>
+                    <div class="wrapper">
+                        <div class="search-input" id="tirex-menu3">
+                            <!-- <a href="" target="_blank" hidden></a> -->
+                            <input type="text" id="tirex-search-discourse-vehicle" placeholder="VIN/Rejestracja">
+                            <div class="autocom-box" id="tirex-box3"></div> <!-- data li -->
+                        </div>
+                    </div>
+                    <br/>
+                    <hr/>
+                    <!-- <span>Wyroki związane ze sprawą</span>
+                    <br/><br>
+                    <span class="judgement-button">Brak</span>
+                    <span class="judgement-button" style="background-color:var(--buttoncolor);color:black;cursor:pointer;" onclick="turnSection('judgement')">Dodaj wyrok</span>
+                    <br style="clear:both;"/><br/> -->
+                    <br>
+                    <p>Treść nowej sprawy</p>
+                    <textarea style="height:250px;" id="tirex-discourse-content"></textarea>
+                    <br/>
+                    <hr/>
+                    <p>Zdjęcia</p>
+                    <div id="discourse-photoList">
+                        <span id="tirex-discurse-images-list">
+                            <div class="discourse-photo"></div>
+                            <div class="discourse-photo"></div>
+                            <div class="discourse-photo"></div>
+                            <div class="discourse-photo"></div>
+                            <div class="discourse-photo"></div>
+                        </span>
+                        <div id="new-discourse-photo" class="discourse-photo" style="cursor:pointer;" onclick="openPopup('discourse-picture-edit')"><p class="discourse-picture-edit"><i class="fa-light fa-circle-plus"></i></p></div>
+                    </div>
+                    <br style="clear:both;"/>
+                    <hr/>
+                    <span class="judgement-button onlyCursorHover" onclick="addNewDiscourse()">Dodaj nową sprawe</span>
+                    <br style=clear:both;/><br/>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="judgement">
+            <div class="item" style="border-collapse:collapse;display:table;--width:17.5%;--height:calc(100% - 50px);--margin:25px">
+                <div id="logo">
+                    <img src="public/img/logo.png" alt="SAPD">
+                    <br/>
+                </div>
+                <hr/>
+                <br/>
+                <div class="nav-button" onclick="turnSection('main')">
+                    <div id="icon"><i class="fa-duotone fa-grid-2"></i></div>
+                    <div id="content">Ekran główny</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('patrol')">
+                    <div id="icon"><i class="fa-duotone fa-user-police"></i></div>
+                    <div id="content">Patrole</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('citizens')">
+                    <div id="icon"><i class="fa-duotone fa-magnifying-glass"></i></div>
+                    <div id="content">Obywatele</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('vehicles')">
+                    <div id="icon"><i class="fa-duotone fa-car-side"></i></div>
+                    <div id="content">Pojazdy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('weapon_evi')">
+                    <div id="icon"><i class="fa-duotone fa-gun"></i></div>
+                    <div id="content">Ewidencja broni</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('discourse')">
+                    <div id="icon"><i class="fa-duotone fa-folder-open"></i></div>
+                    <div id="content">Sprawy</div>
+                </div>
+                <div class="nav-button active" onclick="turnSection('judgement')">
+                    <div id="icon"><i class="fa-duotone fa-handcuffs"></i></div>
+                    <div id="content">Wyroki</div>
+                </div>
+                <!-- <div class="nav-button" onclick="turnSection('evidence')">
+                    <div id="icon"><i class="fa-duotone fa-memo-pad"></i></div>
+                    <div id="content">Ewidencja dowodów</div>
+                </div> -->
+                <div class="nav-button" onclick="turnSection('annoucem')">
+                    <div id="icon"><i class="fa-duotone fa-comments"></i></div>
+                    <div id="content">Komunikaty</div>
+                </div>
+                <div class="nav-button tirex-worker-panel" style="border-bottom:0;" onclick="turnSection('workers')">
+                    <div id="icon"><i class="fa-duotone fa-user"></i></div>
+                    <div id="content">Pracownicy</div> 
+                </div>
+                <div class="nav-button close" >
+                    <div id="icon"><i class="fa-duotone fa-power-off"></i></div>
+                    <div id="content">Wyłącz tablet</div>
+                </div>
+            </div>
+
+            <div id="popup-judgement-background" class="popup">
+                <div id="popup-judgement-import" class="popup-menu" style="--width: 300px; --height: auto; --padding:25px;">
+                    <p>Importuj wyroki ze sprawy</p>
+                    <input type="number" placeholder="Podaj numer sprawy" id="judgement-imported-id">
+                    <input type="button" onclick="closePopup('popup-judgement-import')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                    <input type="button" onclick="addFromPopup('popup-judgement-import')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                </div> 
+            </div>
+            
+            <div id="header" class="item" style="--width:calc(100% - 17.5% - 75px);--height: 50px;--margin:25px 0px 15px 0px;--padding:20px 0px">
+                <span class="tirex-name">Witaj, <b>NAME, SURNAME - TIME</b></span>
+            </div>
+
+            <div id="judgement-list" class="item" style="--width:calc(100% - 17.5% - 105px); --height: calc(100% - 65px - 90px - 30px);--padding:15px ;--margin: 0px 0px;overflow-y:scroll;">
+                <div id="judgement-firstpage">
+                    <span>Osoby otrzymujące wyrok</span>
+                    <br/><br/>
+                    <!-- <input type="number" placeholder="Wpisz ID osoby" style="width:25%;" class="judgement-amount-input">
+                        <span class="judgement-button">Imię nazwisko</span>
+                        <span class="judgement-button">Imię nazwisko</span> -->
+                    <span id="tirex-judgements-buttons">
+                        <!-- <span class="judgement-button">Imię nazwisko</span> -->
+                    </span>
+                    <div class="wrapper">
+                        <div class="search-input" id="tirex-menu-judgements">
+                            <!-- <a href="" target="_blank" hidden></a> -->
+                            <input type="text" id="tirex-search-judgements-citizen" placeholder="Imię i Nazwisko/SSN">
+                            <div class="autocom-box" id="tirex-box-judgements"></div> <!-- data li -->
+                        </div>
+                    </div>
+
+                    <br/>
+                    <hr/>
+                    <br/>
+                    <span>Przestępstwa</span>
+                    <br/><br/>
+                    <span id="tirex-tickets-block-list">
+                        <span class="discourse-person-button">Brak</span>
+                    </span>
+                    <br/><br/>
+                        <span class="judgement-button-details" onclick="openPopup('popup-judgement-import')">Importuj wyroki ze sprawy</span>
+                        <span class="judgement-button-details" onclick="openJudgementList(this)">Edytuj wykroczenia</span>
+                    <br/><br/>
+                    <hr/>
+                    <br/>
+                    <div id="discourse-more-details">
+                        <p class="discourse-info">
+                            Długość wyroku w Mies.
+                            <input type="text" id="tirex-judgement-menu-time" disabled value="0">
+                        </p>
+                        <p class="discourse-info">
+                            Kara finansowa w $
+                            <input type="text" id="tirex-judgement-menu-bill" disabled value="0">
+                        </p>
+                        <p class="discourse-info">
+                            Numer sprawy
+                            <input type="text" id="tirex-judgement-menu-case" disabled>
+                        </p>
+                    </div>
+                    <span class="discourse-person-button onlyCursorHover" style="float:right;margin-right:4.5%;" onclick="sendToJailAndGiveBill()">Wystaw wyrok</span>
+                </div>
+                <div id="judgement-ticket-list">
+                    <div id="category-nav" class="item" style="--width:20%;--height:auto;">
+                        <p>Kategorie</p>
+                        <!-- <p class="category-button-selected" onclick="changeTicketCategory(this, 'narko')" id="narko">Narkotyki</p>
+                        <p class="category-button" onclick="changeTicketCategory(this, 'polowanie')" id="polowanie">Polowanie</p>
+                        <p class="category-button" onclick="changeTicketCategory(this, 'porwanie')" id="porwanie">Porwania</p>
+                        <p class="category-button" onclick="changeTicketCategory(this, 'wykroczenia')" id="wykroczenia">Wykroczenia</p>
+                        <p class="category-button" onclick="changeTicketCategory(this, 'inne')" id="inne">Inne</p>
+                        <p class="category-button" onclick="changeTicketCategory(this, 'napad')" id="napad">Napady/Kradzieże</p>
+                        <p class="category-button" onclick="changeTicketCategory(this, 'drogowe')" id="drogowe">Wykroczenia Drogowe</p>
+                        <p class="category-button" onclick="changeTicketCategory(this, 'przemoc')" id="przemoc">Przemoc</p>
+                        <p class="category-button" onclick="changeTicketCategory(this, 'bron')" id="bron">Broń</p> -->
+                    </div>
+                    <div id="category-ticket-list" class="item" style="--width:calc(80% - 45px); height:90%;padding-left:0;">
+                        <div id="searchbar" style="width:79%;float:left;">
+                            <input type="text" placeholder="Wyszukaj po numerze, lub tytule sprawy)"/>
+                            <div id="searchicon"><i class="fa-light fa-search"></i></div>
+                        </div>
+                        <span id="tirex-judgement-close-button">
+                            <button onclick="closeJudgementList(this)" class="discourse-refresh" style="width:15%;">
+                                Powrót
+                            </button>
+                        </span>
+                        <div id="main-ticket-list" class="item" style="--width:94%;height:410px;overflow-y:scroll;">
+                            <div class="judgement-ticket-box">
+                                <p class="ticket-count">
+                                    <span>0</span>
+                                    <br/>
+                                    <span><i class="fa-light fa-plus" onclick="addAmount(this)"></i><i class="fa-light fa-minus" onclick="decreaseAmount(this)"></i></span>
+                                </p>
+                                <div id="icon"><i class="fa-solid fa-circle"></i></div>
+                                <p class="content">
+                                    <br/>Przemyt<br/>
+                                    <p class="judgement-ticket-amount">15 msc.<span>$999</span></p>
+                                </p>
+                            </div>
+                        </div>
+                        <div style="margin-top:15px;float:left;width:100%;">
+                            <input id="jailamount" type="text" disabled value="0 msc." class="judgement-amount-input" style="width:25%;">
+                            <input id="moneyamount" type="text" disabled value="$ 0" class="judgement-amount-input" style="width:25%;">
+                            <span id="tirex-judgement-add-button">
+                                <button onclick="saveJudgementList(this)" class="discourse-refresh" style="width:25%;float:right;margin-right:15px;padding:10px 25px;border-radius:5px;margin-top:0px;">
+                                    Zapisz
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            
+        </section>
+
+        <section id="evidence">
+            <div class="item" style="border-collapse:collapse;display:table;--width:17.5%;--height:calc(100% - 50px);--margin:25px">
+                <div id="logo">
+                    <img src="public/img/logo.png" alt="SAPD">
+                    <br/>
+                </div>
+                <hr/>
+                <br/>
+                <div class="nav-button" onclick="turnSection('main')">
+                    <div id="icon"><i class="fa-duotone fa-grid-2"></i></div>
+                    <div id="content">Ekran główny</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('patrol')">
+                    <div id="icon"><i class="fa-duotone fa-user-police"></i></div>
+                    <div id="content">Patrole</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('citizens')">
+                    <div id="icon"><i class="fa-duotone fa-magnifying-glass"></i></div>
+                    <div id="content">Obywatele</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('vehicles')">
+                    <div id="icon"><i class="fa-duotone fa-car-side"></i></div>
+                    <div id="content">Pojazdy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('weapon_evi')">
+                    <div id="icon"><i class="fa-duotone fa-gun"></i></div>
+                    <div id="content">Ewidencja broni</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('discourse')">
+                    <div id="icon"><i class="fa-duotone fa-folder-open"></i></div>
+                    <div id="content">Sprawy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('judgement')">
+                    <div id="icon"><i class="fa-duotone fa-handcuffs"></i></div>
+                    <div id="content">Wyroki</div>
+                </div>
+                <!-- <div class="nav-button active" onclick="turnSection('evidence')">
+                    <div id="icon"><i class="fa-duotone fa-memo-pad"></i></div>
+                    <div id="content">Ewidencja dowodów</div>
+                </div> -->
+                <div class="nav-button" onclick="turnSection('annoucem')">
+                    <div id="icon"><i class="fa-duotone fa-comments"></i></div>
+                    <div id="content">Komunikaty</div>
+                </div>
+                <div class="nav-button tirex-worker-panel" style="border-bottom:0;" onclick="turnSection('workers')">
+                    <div id="icon"><i class="fa-duotone fa-user"></i></div>
+                    <div id="content">Pracownicy</div>
+                </div>
+                <div class="nav-button close" >
+                    <div id="icon"><i class="fa-duotone fa-power-off"></i></div>
+                    <div id="content">Wyłącz tablet</div>
+                </div>
+            </div>
+
+            <div id="header" class="item evidence-header" style="--width:calc(100% - 17.5% - 75px);--height: 50px;--margin:25px 0px 15px 0px;--padding:20px 0px">
+                <span class="tirex-name">Witaj, <b>NAME, SURNAME - TIME</b></span>
+            </div>
+
+            <div id="citizen-search" class="item" style="--width:calc(100% - 17.5% - 75px); --height: calc(100% - 65px - 90px); --margin: 0px 0px;overflow-y:scroll;">
+                <div id="evidence-search-box">
+                    <div id="searchbar" style="width:80%;float:left;">
+                        <input type="text" placeholder="Wyszukaj po numerze, lub tytule sprawy)"/>
+                        <div id="searchicon"><i class="fa-light fa-search"></i></div>
+                    </div>
+                    <select class="discourse-refresh" style="margin-left:0px;min-width:50px;font-size:12px;padding:15px 5px;color:white;background-color:var(--itemcolor);">
+                        <option>Wybierz kategorię</option>
+                    </select>
+                    <table id="discourse-list">
+                        <tr>
+                            <th style="width:40%">Numer ewidencji</th>
+                            <th style="width:30%">Typ</th>
+                            <th style="width:20%">Data dodania</th>
+                            <th style="width:10%"></th>
+                        </tr>
+                        <tr onclick="showEvidence(this)">
+                            <td>#00</td>
+                            <td>typ</td>
+                            <td>01/01/1961</td>
+                            <td><span><i class="fa-solid fa-plus"></i></span></td>
+                        </tr>
+                        <tr onclick="showEvidence(this)">
+                            <td>#00</td>
+                            <td>typ</td>
+                            <td>01/01/1961</td>
+                            <td><span><i class="fa-solid fa-plus"></i></span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="evidence-details">
+                    <div id="left">
+                        <span>Kategoria</span>
+                        <p>Próbka krwi</p>
+                        <hr/>
+                    </div>
+                    <div id="right">
+                        <span>Autor</span>
+                        <p>Imię Nazwisko</p>
+                        <hr/>
+                    </div>
+                    <br style="clear:both;"/>
+                    <p>Dodatkowy komentarz</p>
+                    <span>Brak...</span>
+                    <br/><br/>
+                    <hr/>
+                    <div id="citizen-settings" class="citizen-bonus-info">
+                        <br/>
+                        <span class="citizen-button citizen-button-status" style="margin-left:0;" onclick="openPopup('popup-vehicle-wanted')">Edytuj dowód</span>
+                        <br/><br/>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <section id="annoucem">
+            <div class="item" style="border-collapse:collapse;display:table;--width:17.5%;--height:calc(100% - 50px);--margin:25px">
+                <div id="logo">
+                    <img src="public/img/logo.png" alt="SAPD">
+                    <br/>
+                </div>
+                <hr/>
+                <br/>
+                <div class="nav-button" onclick="turnSection('main')">
+                    <div id="icon"><i class="fa-duotone fa-grid-2"></i></div>
+                    <div id="content">Ekran główny</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('patrol')">
+                    <div id="icon"><i class="fa-duotone fa-user-police"></i></div>
+                    <div id="content">Patrole</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('citizens')">
+                    <div id="icon"><i class="fa-duotone fa-magnifying-glass"></i></div>
+                    <div id="content">Obywatele</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('vehicles')">
+                    <div id="icon"><i class="fa-duotone fa-car-side"></i></div>
+                    <div id="content">Pojazdy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('weapon_evi')">
+                    <div id="icon"><i class="fa-duotone fa-gun"></i></div>
+                    <div id="content">Ewidencja broni</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('discourse')">
+                    <div id="icon"><i class="fa-duotone fa-folder-open"></i></div>
+                    <div id="content">Sprawy</div>
+                </div>
+                <div class="nav-button " onclick="turnSection('judgement')">
+                    <div id="icon"><i class="fa-duotone fa-handcuffs"></i></div>
+                    <div id="content">Wyroki</div>
+                </div>
+                <!-- <div class="nav-button" onclick="turnSection('evidence')">
+                    <div id="icon"><i class="fa-duotone fa-memo-pad"></i></div>
+                    <div id="content">Ewidencja dowodów</div>
+                </div> -->
+                <div class="nav-button active" onclick="turnSection('annoucem')">
+                    <div id="icon"><i class="fa-duotone fa-comments"></i></div>
+                    <div id="content">Komunikaty</div>
+                </div>
+                <div class="nav-button tirex-worker-panel" style="border-bottom:0;" onclick="turnSection('workers')">
+                    <div id="icon"><i class="fa-duotone fa-user"></i></div>
+                    <div id="content">Pracownicy</div>
+                </div>
+                <div class="nav-button close" >
+                    <div id="icon"><i class="fa-duotone fa-power-off"></i></div>
+                    <div id="content">Wyłącz tablet</div>
+                </div>
+            </div>
+
+            <div id="popup-announce-background" class="popup">
+                <div id="popup-announce-description" class="popup-menu" style="--width: 500px; --height: auto; --padding:25px;">
+                    <p>Dodaj komunikat</p>
+                    <textarea id="announcement-description" placeholder="Treść"></textarea>
+                    <textarea id="tirex-expiry-days" placeholder="Ilość dni do wygaśnięcia"></textarea>
+                    <input type="button" onclick="closePopup('popup-announce-description')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                    <input type="button" onclick="addFromPopup('popup-announce-description')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                </div> 
+            </div>
+
+            <div id="header" class="item" style="--width:calc(100% - 17.5% - 75px);--height: 50px;--margin:25px 0px 15px 0px;--padding:20px 0px">
+                <span class="tirex-name">Witaj, <b>NAME, SURNAME - TIME</b></span><button id="tirex-announcements-add-button" onclick="openPopup('popup-announce-description')" ><i class="fa-regular fa-circle-plus"></i>&nbsp;&nbsp;&nbsp;Dodaj nowy komunikat</button>
+            </div>
+
+            <div id="annoucements-panel" class="item2" style="--width:calc(100% - 17.5% - 75px); --height: calc(100% - 65px - 90px); --margin: 0px 0px">
+                <p>Nowe komunikaty</p>
+            </div>
+            
+        </section>
+
+        <section id="workers">
+            <div class="item" style="border-collapse:collapse;display:table;--width:17.5%;--height:calc(100% - 50px);--margin:25px">
+                <div id="logo">
+                    <img src="public/img/logo.png" alt="SAPD">
+                    <br/>
+                </div>
+                <hr/>
+                <br/>
+                <div class="nav-button" onclick="turnSection('main')">
+                    <div id="icon"><i class="fa-duotone fa-grid-2"></i></div>
+                    <div id="content">Ekran główny</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('patrol')">
+                    <div id="icon"><i class="fa-duotone fa-user-police"></i></div>
+                    <div id="content">Patrole</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('citizens')">
+                    <div id="icon"><i class="fa-duotone fa-magnifying-glass"></i></div>
+                    <div id="content">Obywatele</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('vehicles')">
+                    <div id="icon"><i class="fa-duotone fa-car-side"></i></div>
+                    <div id="content">Pojazdy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('weapon_evi')">
+                    <div id="icon"><i class="fa-duotone fa-gun"></i></div>
+                    <div id="content">Ewidencja broni</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('discourse')">
+                    <div id="icon"><i class="fa-duotone fa-folder-open"></i></div>
+                    <div id="content">Sprawy</div>
+                </div>
+                <div class="nav-button" onclick="turnSection('judgement')">
+                    <div id="icon"><i class="fa-duotone fa-handcuffs"></i></div>
+                    <div id="content">Wyroki</div>
+                </div>
+                <!-- <div class="nav-button" onclick="turnSection('evidence')">
+                    <div id="icon"><i class="fa-duotone fa-memo-pad"></i></div>
+                    <div id="content">Ewidencja dowodów</div>
+                </div> -->
+                <div class="nav-button" onclick="turnSection('annoucem')">
+                    <div id="icon"><i class="fa-duotone fa-comments"></i></div>
+                    <div id="content">Komunikaty</div>
+                </div>
+                <div class="nav-button active" style="border-bottom:0;" onclick="turnSection('workers')">
+                    <div id="icon"><i class="fa-duotone fa-user"></i></div>
+                    <div id="content">Pracownicy</div>
+                </div>
+                <div class="nav-button close" >
+                    <div id="icon"><i class="fa-duotone fa-power-off"></i></div>
+                    <div id="content">Wyłącz tablet</div>
+                </div>
+            </div>
+
+            <div id="popup-worker-background" class="popup">
+                <div id="popup-add-worker" class="popup-menu" style="--width: 350px; --height: 200px; --padding:25px;">
+                    <p>Dodaj nowego pracownika</p>
+                    <input type="number" id="tirex-workers-add-worker-id" placeholder="ID Gracza">
+                    <select class="patrol-select" id="tirex-workers-add-worker-grade-list">
+                    </select>
+                    <input type="button" onclick="closePopup('popup-add-worker')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                    <input type="button" onclick="addFromPopup('popup-add-worker')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                </div>    
+                <div id="popup-worker-description" class="popup-menu" style="--width: 550px; --height: 200px; --padding:25px;">
+                    <p>Edytuj opis pracownika</p>
+                    <textarea placeholder="Wpisz opis pracownika"></textarea>
+                    <input type="button" onclick="closePopup('popup-worker-description')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                    <input type="button" onclick="addFromPopup('popup-worker-description')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                </div> 
+                <div id="popup-worker-level" class="popup-menu" style="--width: 250px; --height: 125px; --padding:25px;">
+                    <p>Edytuj stopień pracownika</p>
+                    <select class="patrol-select" id="tirex-workers-change-worker-grade">
+                    </select>
+                    <input type="button" onclick="closePopup('popup-worker-level')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                    <span id="tirex-workers-level-button">
+                        <input type="button" onclick="addFromPopup('popup-worker-level')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                    </span>
+                </div> 
+                <div id="popup-worker-license" class="popup-menu" style="--width: 250px; --height: 125px; --padding:25px;">
+                    <p>Edytuj licencje pracownika</p>
+                    <select class="patrol-select" id="tirex-workers-change-worker-license">
+                    </select>
+                    <input type="button" onclick="closePopup('popup-worker-license')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                    <span id="tirex-workers-license-button">
+                        <input type="button" onclick="addFromPopup('popup-worker-license')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                    </span>
+                </div> 
+                <!-- <div id="popup-worker-crypto" class="popup-menu" style="--width: 250px; --height: 125px; --padding:25px;">
+                    <p>Edytuj jednostke pracownika</p>
+                    <select class="patrol-select" id="patrol-selected-vehicle">
+                    </select>
+                    <input type="button" onclick="closePopup('popup-worker-crypto')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                    <input type="button" onclick="addFromPopup('popup-worker-crypto')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                </div>  -->
+                <div id="popup-worker-badge" class="popup-menu" style="--width: 250px; --height: 125px; --padding:25px;">
+                    <p>Edytuj odznake pracownika</p>
+                    <input type="number" id="tirex-workers-new-badge" placeholder="Wpisz numer odznaki">
+                    <input type="button" onclick="closePopup('popup-worker-badge')" class="popup-button popup-cancel" style="--width:calc(50% - 5px);" value="Anuluj">
+                    <span id="tirex-workers-badge-button">
+                        <input type="button" onclick="addFromPopup('popup-worker-badge')" class="popup-button popup-confirm" style="--width:calc(50% - 5px);--margin:0px 0px 0px 10px;"  value="Potwierdź">
+                    </span>
+                </div> 
+            </div>
+
+            <div id="header" class="item worker-header" style="--width:calc(100% - 17.5% - 75px);--height: 50px;--margin:25px 0px 15px 0px;--padding:20px 0px">
+                <span class="tirex-name">Witaj, <b>NAME, SURNAME - TIME</b></span><button onclick="openPopup('popup-add-worker')"><i class="fa-regular fa-circle-plus"></i>&nbsp;&nbsp;&nbsp;Dodaj pracownika</button>
+            </div>
+
+            <div id="workers-table" class="item" style="--width:calc(100% - 17.5% - 75px); --height: calc(100% - 65px - 90px); --margin: 0px 0px">
+                <div id="workers-search-box">
+                    <div id="searchbar" style="width:83%;float:left;">
+                        <input type="text" id="tirex-search-worker" placeholder="Wyszukaj pracownika"/>
+                        <div id="searchicon"><i class="fa-light fa-search"></i></div>
+                    </div>
+                    <button class="discourse-refresh" onclick="refreshWorkersList()" style="width:12%;">
+                        Odśwież
+                    </button>
+                    
+                    <span id="tirex-worker-list">
+                        <table id="discourse-list">
+                            <tr>
+                                <th style="width:30%">Imię i nazwisko</th>
+                                <th style="width:10%">Stopień</th>
+                                <th style="width:20%">Jednostka</th>
+                                <th style="width:15%">Ostatnio Aktywny</th>
+                                <th style="width:20%">Czas na służbie</th>
+                                <th style="width:5%"></th>
+                            </tr>
+
+                        </table>
+                    </span>
+                </div>
+
+                <div id="worker-details">
+                    <div id="left">
+                        <span>Imię i nazwisko</span>
+                        <p>Imię naziwsko</p>
+                        <hr/>
+                        <span>Jednostka</span>
+                        <p>Jednostka</p>
+                        <hr/>
+                        <span>Stopień</span>
+                        <p>stopień</p>
+                        <hr/>
+                        <span>Czas na służbie</span>
+                        <p>00:00:00</p>
+                        <hr/>
+                        <span>Licencje</span>
+                        <p>Brak...</p>
+                    </div>
+                    <div id="right">
+                        <span>Data urodzenia</span>
+                        <p>01/01/1961</p>
+                        <hr/>
+                        <span>Numer SSN</span>
+                        <p>1</p>
+                        <hr/>
+                        <span>Numer Odznaki</span>
+                        <p>Brak</p>
+                        <hr/>
+                    </div>
+                    <hr/>
+       
+                    <br/>
+                    <!-- <span class="citizen-button citizen-button-status" style="margin-left:0;" onclick="openPopup('popup-worker-description')">Edytuj komentarz</span> -->
+                    <span class="citizen-button citizen-button-status" style="margin-left:0;" onclick="openPopup('popup-worker-level')">Zmień stopień</span>
+                    <span class="citizen-button citizen-button-status" style="margin-left:0;" onclick="openPopup('popup-worker-license')">Zarządzaj licencją</span>
+                    <!-- <span class="citizen-button citizen-button-status" style="margin-left:0;" onclick="openPopup('popup-worker-crypto')">Zarządzaj jednostkę</span> -->
+                    <span class="citizen-button citizen-button-status" style="margin-left:0;" onclick="openPopup('popup-worker-badge')">Zarządzaj odznaką</span>
+                </div>
+                
+            </div>
+            
+        </section>
+    </span>
+
+    <span id="tirex-dispatch-section">
+        <div id="container">
+            <span id="active-notification" class="dispatch-title">Aktywne zgłoszenie</span>
+    
+            <span id="tirex-dispatch-now-reports">
+         
+            </span>
+    
+            <span id="notification" class="dispatch-title">Aktualne zgłoszenia</span>
+    
+            <span id="tirex-dispatch-data">
+            
+            </span>
+        </div>
+    </span>
+    
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="public/js/locale.js" defer></script>
+    <script src="public/js/config.js" defer></script>
+    <script src="public/js/script.js" defer></script>
+</body>
+</html>
